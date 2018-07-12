@@ -378,6 +378,9 @@ proc ValidateUser { socketID username password {type {raw socket}} } {
         # Log the access
         LogClientAccess "[GetCurrentTimeStamp]: $socketID - $username logged in from $socketInfo($socketID) via $type"
 
+        # Log additionnaly to the message file for syslog audit
+        LogMessage "[GetCurrentTimeStamp]: $socketID - $username logged in from $socketInfo($socketID) via $type"
+
         # Mark the socket as valid
         lappend validSockets $socketID
 
