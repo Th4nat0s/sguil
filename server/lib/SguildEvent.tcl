@@ -18,7 +18,12 @@ proc EventRcvd { eventDataList } {
     set message [lindex $eventDataList 5]
     SendSystemInfoMsg $sensorName $message
   } else {
-    InfoMessage "Alert Received: $eventDataList"
+
+    # Update from InfoMessage to LogMessage
+    # In order to get event in messages file for
+    # tracking
+
+    LogMessage "Alert Received: $eventDataList"
 
     # If we don't have any auto-cat rules, or we don't match on
     # the autocat, then we send off the rule
